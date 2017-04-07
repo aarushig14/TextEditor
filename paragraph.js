@@ -6,9 +6,9 @@ window.onload=function () {
     sessionStorage.removeItem('draggeditem');
     var editor = document.getElementById('editor');
     editor.innerHTML = null;
-    editor.addEventListener('keypressed',addpara,false);
+    editor.addEventListener('keypress',addpara,false);
     editor.addEventListener('click',handle,false);
-    editor.addEventListener('dblclicked',formatting,false);
+    editor.addEventListener('dblclick',formatting,false);
     document.getElementById('title').innerHTML = null;
 
 }
