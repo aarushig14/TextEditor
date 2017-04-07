@@ -5,8 +5,25 @@
     <title>Title</title>
     <style>
 
-        .tooltip {
-            visibility: hidden;
+        /*.t .tooltip {*/
+            /*visibility: hidden;*/
+            /*width: 120px;*/
+            /*background-color: black;*/
+            /*color: #fff;*/
+            /*text-align: center;*/
+            /*border-radius: 6px;*/
+            /*padding: 5px 0;*/
+
+            /*!* Position the tooltip *!*/
+            /*position: absolute;*/
+            /*z-index: 1;*/
+        /*}*/
+
+        /*.t:hover .tooltip {*/
+            /*visibility: visible;*/
+        /*}*/
+
+        div p .tooltip {
             width: 120px;
             background-color: #555;
             color: #fff;
@@ -15,16 +32,11 @@
             padding: 5px 0;
             position: absolute;
             z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            margin-left: -60px;
-            opacity: 0;
-            transition: opacity 1s;
         }
 
-        .t:hover .tooltip{
-            visibility: visible;
-        }
+        /*.t:hover .tooltip {*/
+            /*visibility: visible;*/
+        /*}*/
 
     </style>
     
@@ -50,6 +62,7 @@
                 elem.innerHTML = "Hii this is tooltip"
                 e.target.appendChild(elem);
                 e.target._spanRef = elem;
+
             },
             hidetip: function (e) {
                 e.target.removeChild(e.target._spanRef);
@@ -66,8 +79,9 @@
 <body>
 <h1>dvebgqetbqe</h1>
 
-<div class="t" id="editor" ondblclick="dblclick(event)">Hover over me
-        <span class="tooltip"><input class="ttcontent" type="button" value="clickme" onclick="click()"></span>
+<div class="t" id="editor" ondblclick="dblclick(event)">
+    <p>Hover over me</p>
+        <!--<span class="tooltip"><input class="ttcontent" type="button" value="clickme" onclick="click()"></span>-->
 </div>
 
 </body>
