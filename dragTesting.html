@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload=function () {
+            var image = document.getElementById('para1');
+            image.addEventListener('dragstart',startdrag,false);
+            var para = document.getElementById('para0');
+            para.addEventListener('dragenter',function(e){
+                console.log("dragenter");
+                e.preventDefault()
+            },false);
+            para.addEventListener('dragleave',function(e){
+                e.preventDefault()
+            },false);
+            para.addEventListener('dragover',function(e){
+                e.preventDefault()
+            },false);
+            para.addEventListener('drop',dropped,false);
+
+
+        }
+        function startdrag(e) {
+            console.log("startdrag");
+            console.log(e.target);
+            sessionStorage.setItem('draggeditem',e.target.outerHTML);
+        }
+        function dropped(e) {
+            console.log("dropped");
+            e.preventDefault();
+//            sessionStorage.setItem('value',t.innerHTML);
+            console.log(e.target);
+            e.target.innerHTML = sessionStorage.getItem('draggeditem');
+            }
+    </script>
+</head>
+<body>
+
+<section style="width: 300px;height: 300px;margin: auto;border: solid green " id="para0">
+    fvnaeeeeeeeeeeeeeeeeef;
+</section>
+<section style="border: solid aqua;width: 300px;height: 300px;margin: auto"id="para1">
+    <br>
+    <img style="width: 200px;max-height: 200px" src="https://www.google.co.in/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png">
+</section>
+
+<!--<p id="para0" >ghgd</p>-->
+<!--<p id="para1" >eqargae</p>-->
+
+</body>
+</html>

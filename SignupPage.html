@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        var obj = JSON.parse(localStorage.getItem('clients'));
+        if(!obj){
+            obj = [];
+            localStorage.setItem('clients',JSON.stringify(obj));
+        }
+
+        function  signin(username,password){
+            console.log(username + " " + password);
+            var clients = JSON.parse(localStorage.getItem('clients'));
+            var pswrd = "";
+            clients.forEach(function (item,index) {
+                console.log(index+ " " + item + " " + item['un'] + " " + item['ps']);
+                if(item['un']==("username")){
+                    pswrd = item['ps'];
+                };
+            });
+            console.log("pswrd "+pswrd);
+            if(pswrd === (password)){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        function check(a){
+        if(un === "" ){
+            document.getElementById("error").innerHTML = "*Please Enter Data in the mandatory field(*)";
+            document.getElementById("error").style.visibility = "visible";
+            return false;
+        }
+        return true;
+        }
+
+        function signing(element){
+            if(element ===  document.getElementById('signupbtn')){
+                if(!signup()){
+                    console.log(document.getElementById('error'));
+                    document.getElementById("error").innerHTML = "*Username already exist.Please try again";
+                    document.getElementById('error').style.visibility = "visible";
+                }
+                return;
+
+            }
+
+            var un = document.getElementById('username').value;
+            var ps = document.getElementById('password').value;
+            if(!check(un) || !check(ps)){
+                return;
+            }
+            var ans = signin(un.value,ps.value);
+            console.log(ans);
+            if(ans){
+                localStorage.setItem('user',JSON.stringify(un));
+            }else{
+                console.log(document.getElementById('error'));
+                document.getElementById("error").innerHTML = "*Either username or password entered are invalid.Please enter again";
+                document.getElementById('error').style.visibility = "visible";
+            }
+        }
+
+        function signup(){
+
+            var fn = document.getElementById('first').value;
+            var ln = document.getElementById('last').value;
+            var un = document.getElementById('username').value;
+            var ps = document.getElementById('password').value;
+            if(!check(fn) || !check(un) || !check(ps)){
+                return;
+            }
+            var clients = JSON.parse(localStorage.getItem('clients'));
+            var flag=0;
+            clients.forEach(function(item){
+                if(item['un'] === un){
+                    flag = 1;
+                };
+            })
+            if(flag==1){
+                return false;
+            }else{
+                var object  = {
+                    first:fn,
+                    last:ln,
+                    un:un,
+                    ps:ps
+                }
+                console.log(object);
+                clients.push(object)
+                console.log(clients);
+                localStorage.setItem('clients',JSON.stringify(clients));
+                return true;
+            }
+        }
+
+        function changeView(){
+            document.getElementById('first').style.visibility = "visible";
+            document.getElementById('last').style.visibility = "visible";
+            document.getElementById('ftv').style.visibility = "visible";
+            document.getElementById('ltv').style.visibility = "visible";
+            document.getElementById('signbtn').style.visibility = "collapse";
+            document.getElementById('register').style.visibility = "collapse";
+            document.getElementById('signupbtn').style.visibility = "visible";
+        }
+
+    </script>
+
+    <style>
+        .container{
+            width: 50%;
+            height: 600px;
+            display: flex;
+            background-color: antiquewhite;
+            margin: auto;
+        }
+        .content{
+            display: flex;
+            flex-direction: column;
+            align-self: center;
+            align-content: center;
+            width:30%;
+            margin: auto;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="container" style="alignment: center">
+        <div class="navbar">
+
+        </div>
+    <div class="content">
+        <p style="visibility: collapse;color: red;font-size: 10px;align-self: center;text-align: center" id="error"></p>
+
+        <span style="visibility:collapse;align-self:center" id="ftv"><sup style="color: red">*</sup>Enter first name:</span>
+        <input type="TEXT" id="first" style="visibility: collapse;">
+        <span style="visibility:collapse;align-self:center" id="ltv">Enter last name:</span>
+        <input type="TEXT" id="last" style="visibility:collapse">
+
+        <span style="align-self:center" id="un"><sup style="color: red">*</sup>Username :</span>
+        <input type="TEXT" id="username">
+        <span style="align-self:center" id="ps"><sup style="color: red">*</sup>Password:</span>
+        <input type="password" id="password">
+        <br>
+        <input type="button" value="SignIn" id="signbtn" onclick="signing(this)">
+        <br>
+        <input type="button" value="Signup" onclick="signing(this)" id="signupbtn" style="visibility: collapse">
+        <p style="font-size: 10px;font-weight:10;text-align: center" id="register" onclick="changeView()">New User.Please click here to Register.</p>
+    </div>
+</div>
+
+
+</body>
+</html>

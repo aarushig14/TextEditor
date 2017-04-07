@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        .tooltip {
+            visibility: hidden;
+            width: 120px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+
+        .t:hover .tooltip{
+            visibility: visible;
+        }
+
+    </style>
+    
+    <script>
+        function dblclick(e){
+            var s = document.getSelection();
+            var range = s.getRangeAt(0);
+//            range.setData("<b>" + range.toString() + "</b>");
+            var node = s.anchorNode
+//            var text = e.target.innerHTML ;
+//            var str= text.substring(0,range.startOffset) + "<b>" + range.toString() + "</b>" + text.substring(range.endOffset);
+//            e.target.innerHTML = str;
+            console.log("dblCLick");
+            tooltip.showtip(e);
+
+        }
+
+        var tooltip = {
+            showtip: function (e) {
+                console.log("showtip");
+                var elem = document.createElement('span');
+                elem.className = 'tooltip';
+                elem.innerHTML = "Hii this is tooltip"
+                e.target.appendChild(elem);
+                e.target._spanRef = elem;
+            },
+            hidetip: function (e) {
+                e.target.removeChild(e.target._spanRef);
+            }
+        }
+
+        function click() {
+            console.log("click");
+        }
+
+    </script>
+    
+</head>
+<body>
+<h1>dvebgqetbqe</h1>
+
+<div class="t" id="editor" ondblclick="dblclick(event)">Hover over me
+        <span class="tooltip"><input class="ttcontent" type="button" value="clickme" onclick="click()"></span>
+</div>
+
+</body>
+</html>

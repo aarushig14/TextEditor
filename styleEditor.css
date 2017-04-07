@@ -1,0 +1,52 @@
+.head{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 20px;
+    position: relative;
+    width: 100%;
+    margin: auto;
+}
+
+.link{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 50%;
+    align-self: center;
+    margin: auto;
+    justify-content: center;
+}
+
+
+.content{
+    display: flex;
+    width: 50%;
+    min-height: 60vh;
+    flex-direction: column;
+    height: auto;
+    align-content: center;
+    margin-top: 100px;
+    margin: auto;
+    border: solid;
+    border-color: gainsboro;
+}
+
+.tooltip{
+    visibility: hidden;
+    width: 120px;
+    background-color: rgba(220, 117, 66, 0.53);
+    color: #fff;
+    align-content: center;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
