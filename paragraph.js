@@ -2,8 +2,22 @@
  * Created by a.gupta1409 on 05-04-2017.
  */
 
+window.onload=function () {
+    sessionStorage.removeItem('draggeditem');
+    var editor = document.getElementById('editor');
+    editor.innerHTML = null;
+    editor.addEventListener('keypressed',addpara,false);
+    editor.addEventListener('click',handle,false);
+    editor.addEventListener('dblclicked',formatting,false);
+    document.getElementById('title').innerHTML = null;
+
+}
+
+/* global variable cnt*/
 cnt=0;
-function addpara(event,element) {
+
+/* function to add paragraph on enter */
+function addpara(event) {
     var editor = document.getElementById('editor');
 
     if(cnt == 0 && event.keyCode === 32){
@@ -15,36 +29,34 @@ function addpara(event,element) {
     }
 }
 
+
+/* function to add drag property in paragraph elements */
 function addDrag(){
     var paras = document.getElementsByTagName('p');
     var p = paras[paras.length-1];
     p = createP(p);
     cnt++;
-    console.log(p.outerHTML);
 }
 
-
-function enddrag(e){
-    console.log('enddrag');
-    console.log(typeof e.target);
-    e.target.parentNode.removeChild(e.target);
+/* START DRAG */
+function startdrag(e) {
+    sessionStorage.setItem('draggeditem',e.target.outerHTML);
 }
 
+/* DROPPED */
 function dropped(e) {
-    console.log("dropped");
     e.preventDefault();
-    console.log(e.target);
     var p = createP();
     p.innerHTML = sessionStorage.getItem('draggeditem') ;
     e.target.parentNode.insertBefore(p,e.target);
 }
 
-function startdrag(e) {
-    console.log("startdrag");
-    console.log(typeof e.target.outerHTML);
-    sessionStorage.setItem('draggeditem',e.target.outerHTML);
+/* END DRAG */
+function enddrag(e){
+    e.target.parentNode.removeChild(e.target);
 }
 
+/* function to create element p with event listeners */
 function createP(element){
     if(!element) {
         var p = document.createElement('p');
@@ -56,7 +68,6 @@ function createP(element){
     p.setAttribute('draggable','true');
     p.addEventListener('dragstart',startdrag,false);
     p.addEventListener('dragenter',function(e){
-        console.log("dragenter");
         e.preventDefault()
     },false);
     p.addEventListener('dragend',enddrag,false);
