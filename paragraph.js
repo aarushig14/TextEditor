@@ -64,17 +64,9 @@ function createP(element){
         e.preventDefault()
     },false);
     p.addEventListener('drop',dropped,false);
-    p.addEventListener('dblclick',dblclick,false);
     return p;
 }
 
-function dblclick(e){
-    var s = document.getSelection();
-    var range = s.getRangeAt(0);
-    var node = s.anchorNode
-    range.surroundContents(node);
-    console.log(str);
-}
 
 
 

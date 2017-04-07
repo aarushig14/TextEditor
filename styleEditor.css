@@ -32,21 +32,32 @@
     border-color: gainsboro;
 }
 
-.tooltip{
-    visibility: hidden;
-    width: 120px;
-    background-color: rgba(220, 117, 66, 0.53);
+.btn-group button {
+    background-color: black; /* Green background */
+    border: 1px solid black; /* Green border */
+    color: white; /* White text */
+    padding: 5px 15px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+}
+
+
+.btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+    background-color: #555;
+}
+
+.tooltip {
+    width: auto;
+    background-color: black;
     color: #fff;
-    align-content: center;
     text-align: center;
     border-radius: 6px;
     padding: 5px 0;
     position: absolute;
     z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -60px;
-    opacity: 0;
-    transition: opacity 1s;
 }
-
