@@ -13,20 +13,27 @@
 
     <div class="container">
 
+        <!--  HEAD - IMAGE , AUTHOR NAME  -->
         <div class="head" id="head">
-
+            <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS3GTfwpLmgcva_Iw2-mK7aqHu2-iSmiM3P7YpZBcw0ZlUddS-NhQ" class="user">
+            <span class="name" contenteditable="true" placeholder="Author name..."></span>
         </div>
 
-        <div class="content" contenteditable="true" id="editor" onkeypress="addpara(event)" ondblclick="formatting(event)">
-        </div>
+        <!--  TITLE  -->
+        <div contenteditable="true" class="title" placeholder="Title..." id="title"></div>
 
+        <!--  TEXT EDITOR  -->
+        <div class="content" contenteditable="true" id="editor" placeholder="Unleash your creativity..."></div>
+
+        <!--  DONE  -->
         <div style="height: 20%;width: 50%;margin: auto;margin-top: 50px;align-items: center;display: flex;flex-direction: row;justify-content: center">
-            <input type="button" value="DONE" onclick="done()" >
+            <input class="button" type="button" value="DONE" onclick="done()" >
         </div>
 
-        <div class="link" id="link">
-        </div>
-        <div style="width: auto;min-height: 200px"></div>
+        <!--  LINKS  -->
+        <div class="link" id="link"></div>
+
+        <div style="width: auto;min-height: 150px"></div>
 
     </div>
 
